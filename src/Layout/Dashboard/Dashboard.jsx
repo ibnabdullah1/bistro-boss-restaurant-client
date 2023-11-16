@@ -13,19 +13,13 @@ import { RxBorderWidth } from "react-icons/rx";
 import { GoCodeReview } from "react-icons/go";
 import useCart from "../../Hooks/useCart";
 import { FaChartBar, FaUsers } from "react-icons/fa6";
-import useAuth from "../../Hooks/useAuth";
-import { useEffect, useState } from "react";
+import useAdmin from "../../Hooks/useAdmin";
 const Dashboard = () => {
   const [cart] = useCart();
-  const [isAdmin, setIsAdmin] = useState(false);
-  const { user } = useAuth();
-  useEffect(() => {
-    if (user.email == "bistroadmin@gmail.com") {
-      setIsAdmin(true);
-    } else {
-      setIsAdmin(true);
-    }
-  }, [user.email]);
+
+  //bistroadmin1234
+
+  const [isAdmin] = useAdmin();
   // TODO:
   return (
     <div className="flex">

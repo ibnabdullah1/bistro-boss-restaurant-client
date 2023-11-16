@@ -34,11 +34,11 @@ const SocialLogin = () => {
         console.log(res.data);
         if (!res.data.insertedId) {
           toast.error("user already exists");
-          navigate("/");
+          navigate(from, { replace: true });
         }
         if (res.data.insertedId) {
           toast.success("User created successfully");
-          navigate("/");
+          navigate(from, { replace: true });
         }
       });
     });

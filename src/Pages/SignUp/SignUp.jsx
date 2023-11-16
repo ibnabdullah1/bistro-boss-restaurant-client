@@ -1,14 +1,15 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
+import {} from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import useAuth from "../../Hooks/useAuth";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import SocialLogin from "../../Components/SocialLogin/SocialLogin";
+import useAuth from "../../Hooks/useAuth";
 const SignUp = () => {
   // eslint-disable-next-line no-unused-vars
   const axiosPublic = useAxiosPublic();
+  const location = useLocation();
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
@@ -30,17 +31,21 @@ const SignUp = () => {
       );
       return;
     } else {
-      setError("");
+      setError("Provided special characters");
     }
 
     // creating a new user
     createUser(email, password)
-      .then(() => {
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate("/");
         updateUserProfile(name, image).then(() => {
           const userInfo = {
             name,
             email,
           };
+          console.log(userInfo);
           axiosPublic.post("/users", userInfo).then((res) => {
             if (res.data.insertedId) {
               console.log("User added to the database");
@@ -138,10 +143,7 @@ const SignUp = () => {
           </div>
 
           <div>
-            <button
-              type="submit"
-              className="bg-[#D1A054] w-full rounded-md py-3 text-white"
-            >
+            <button className="bg-[#D1A054] w-full rounded-md py-3 text-white">
               Continue
             </button>
           </div>

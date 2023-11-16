@@ -3,10 +3,10 @@ import { FaTrashAlt } from "react-icons/fa";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
-
   const { refetch, data: users = [] } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
@@ -17,6 +17,13 @@ const AllUsers = () => {
 
   const handleMakeAdmin = (user) => {
     console.log(user);
+    axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
+      console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        refetch();
+        toast.success("User role updated successfully");
+      }
+    });
   };
 
   const handleDelete = (user) => {

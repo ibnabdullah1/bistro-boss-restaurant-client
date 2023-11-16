@@ -1,5 +1,4 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
 import loginImg from "../../assets/others/authentication2 1.png";
 import useAuth from "../../Hooks/useAuth";
 import {
@@ -8,7 +7,6 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
@@ -17,24 +15,14 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  const { signInWithGoogle, signIn } = useAuth();
-
-  // const handleLoginWithGoogle = () => {
-  //   signInWithGoogle().then(() => {
-  //     navigate(from, { replace: true });
-  //     toast.success(" Your Logged Successfully");
-  //   });
-  // };
+  const { signIn } = useAuth();
 
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email?.value;
     const password = form.password.value;
-    console.log(email, password);
-    signIn(email, password).then((result) => {
-      const user = result.user;
-      console.log(user);
+    signIn(email, password).then(() => {
       Swal.fire({
         title: "User Login Successful.",
         showClass: {
@@ -127,17 +115,6 @@ const Login = () => {
           </div>
 
           <div>
-            {/* <button
-              type="submit"
-              disabled={disabled}
-              className={` ${
-                disabled
-                  ? "bg-gray-300 text-gray-400"
-                  : "bg-[#D1A054] text-white"
-              } w-full rounded-md py-3 `}
-            >
-              Login
-            </button> */}
             <button
               type="submit"
               className="bg-[#D1A054] text-white w-full rounded-md py-3 "
