@@ -10,22 +10,21 @@ import {
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-
-  console.log("State in the location login page", location.state);
   const { signInWithGoogle, signIn } = useAuth();
 
-  const handleLoginWithGoogle = () => {
-    signInWithGoogle().then(() => {
-      navigate(from, { replace: true });
-      toast.success(" Your Logged Successfully");
-    });
-  };
+  // const handleLoginWithGoogle = () => {
+  //   signInWithGoogle().then(() => {
+  //     navigate(from, { replace: true });
+  //     toast.success(" Your Logged Successfully");
+  //   });
+  // };
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -160,14 +159,15 @@ const Login = () => {
           </p>
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
-        <button
+        {/* <button
           onClick={handleLoginWithGoogle}
           className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer"
         >
           <FcGoogle size={32} />
 
           <p>Continue with Google</p>
-        </button>
+        </button> */}
+        <SocialLogin />
         <p className="px-6 text-sm text-center text-gray-400">
           Don&apos;t have an account yet?{" "}
           <Link

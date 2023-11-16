@@ -4,10 +4,11 @@ import Menu from "../Pages/MenuPage/Menu/Menu";
 import MainLayout from "../Layout/MainLayout/MainLayout";
 import Order from "../Pages/OrderFood/Order/Order";
 import Login from "../Pages/Login/Login";
-import SignUp from "../Pages/Home/SignUp/Register";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard/Dashboard";
 import Cart from "../Layout/Dashboard/Cart";
+import SignUp from "../Pages/SignUp/SignUp";
+import AllUsers from "../Layout/Dashboard/AllUsers";
 // import SignUp from "../Pages/Home/SignUp/SignUp";
 
 const router = createBrowserRouter([
@@ -47,11 +48,19 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/dashboard/cart",
         element: <Cart />,
+      },
+      {
+        path: "/dashboard/users",
+        element: <AllUsers />,
       },
     ],
   },
