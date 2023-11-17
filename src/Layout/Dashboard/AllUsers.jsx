@@ -4,6 +4,7 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
@@ -49,6 +50,8 @@ const AllUsers = () => {
 
   return (
     <div>
+      <SectionTitle heading={"MANAGE ALL USERS"} subHeading={"How many"} />
+
       <div className="flex justify-evenly my-4">
         <h2 className="text-3xl"> All users</h2>
         <h2 className="text-3xl">Total users {users?.length}</h2>

@@ -22,8 +22,8 @@ const Dashboard = () => {
   const [isAdmin] = useAdmin();
   // TODO:
   return (
-    <div className="flex">
-      <div className="w-[256px] min-h-screen bg-[#D1A054]">
+    <div className="flex ">
+      <div className="w-[256px]  min-h-screen bg-[#D1A054]">
         <ul className="menu">
           {isAdmin ? (
             <>

@@ -10,16 +10,6 @@ import MenuCategory from "../MenuCategory/MenuCategory";
 import useMenu from "../../../Hooks/useMenu";
 
 const Menu = () => {
-  // const [menu, setMenu] = useState([]);
-
-  // useEffect(() => {
-  //   fetch("menu.json")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setMenu(data);
-  //     });
-  // }, []);
-
   const [menu] = useMenu();
 
   const offered = menu.filter((item) => item.category === "offered");
@@ -27,6 +17,7 @@ const Menu = () => {
   const soup = menu.filter((item) => item.category === "soup");
   const salad = menu.filter((item) => item.category === "salad");
   const pizza = menu.filter((item) => item.category === "pizza");
+
   return (
     <div>
       <Helmet>

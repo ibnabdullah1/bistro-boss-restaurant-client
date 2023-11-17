@@ -9,6 +9,10 @@ import Dashboard from "../Layout/Dashboard/Dashboard";
 import Cart from "../Layout/Dashboard/Cart";
 import SignUp from "../Pages/SignUp/SignUp";
 import AllUsers from "../Layout/Dashboard/AllUsers";
+import AddItems from "../Layout/Dashboard/AddItems";
+import AdminRoute from "./adminRoute";
+import ManageItems from "../Layout/Dashboard/ManageItems";
+import UpdateItem from "../Layout/Dashboard/UpdateItem";
 // import SignUp from "../Pages/Home/SignUp/SignUp";
 
 const router = createBrowserRouter([
@@ -47,7 +51,7 @@ const router = createBrowserRouter([
     element: <SignUp />,
   },
   {
-    path: "/dashboard",
+    path: "dashboard",
     element: (
       <PrivateRoute>
         <Dashboard />
@@ -55,12 +59,43 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/dashboard/cart",
+        path: "cart",
         element: <Cart />,
       },
       {
-        path: "/dashboard/users",
-        element: <AllUsers />,
+        path: "users",
+        element: (
+          <AdminRoute>
+            {" "}
+            <AllUsers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "additems",
+        element: (
+          <AdminRoute>
+            <AddItems />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manageitems",
+        element: (
+          <AdminRoute>
+            <ManageItems />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "updateItem/:id",
+        element: (
+          <AdminRoute>
+            <UpdateItem />
+          </AdminRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/menu/${params.id}`),
       },
     ],
   },
