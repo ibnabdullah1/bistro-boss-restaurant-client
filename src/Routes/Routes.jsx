@@ -13,6 +13,8 @@ import AddItems from "../Layout/Dashboard/AddItems";
 import AdminRoute from "./adminRoute";
 import ManageItems from "../Layout/Dashboard/ManageItems";
 import UpdateItem from "../Layout/Dashboard/UpdateItem";
+import Payment from "../Layout/Dashboard/Payment";
+import PaymentHistory from "../Layout/Dashboard/PaymentHistory";
 // import SignUp from "../Pages/Home/SignUp/SignUp";
 
 const router = createBrowserRouter([
@@ -96,6 +98,14 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/menu/${params.id}`),
+      },
+      {
+        path: "reservation",
+        element: <Payment />,
+      },
+      {
+        path: "paymentHistory",
+        element: <PaymentHistory />,
       },
     ],
   },

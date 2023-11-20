@@ -23,8 +23,8 @@ const SignUp = () => {
     const image = e.target.image.value;
     setError("");
     if (
-      password.length < 6 ||
-      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(password)
+      password.length < 6
+      //  || /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(password)
     ) {
       setError(
         "Invalid password. Password must have at least 6 characters, one capital letter, and one special character."
@@ -60,6 +60,7 @@ const SignUp = () => {
         toast.error(error.message);
       });
   };
+  console.log(error);
   return (
     <div
       style={{
@@ -143,8 +144,11 @@ const SignUp = () => {
           </div>
 
           <div>
-            <button className="bg-[#D1A054] w-full rounded-md py-3 text-white">
-              Continue
+            <button
+              type="submit"
+              className="bg-[#D1A054] hover:bg-[#D1A054] btn w-full rounded-md py-3 text-white"
+            >
+              SignUp
             </button>
           </div>
         </form>

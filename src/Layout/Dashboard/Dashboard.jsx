@@ -12,7 +12,7 @@ import { BiSolidCalendar } from "react-icons/bi";
 import { RxBorderWidth } from "react-icons/rx";
 import { GoCodeReview } from "react-icons/go";
 import useCart from "../../Hooks/useCart";
-import { FaChartBar, FaUsers } from "react-icons/fa6";
+import { FaChartBar, FaCreditCard, FaUsers } from "react-icons/fa6";
 import useAdmin from "../../Hooks/useAdmin";
 const Dashboard = () => {
   const [cart] = useCart();
@@ -63,6 +63,11 @@ const Dashboard = () => {
               <li>
                 <NavLink to="/dashboard/reservation">
                   <BiSolidCalendar /> Reservation
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/paymentHistory">
+                  <FaCreditCard /> Payment history
                 </NavLink>
               </li>
               <li>

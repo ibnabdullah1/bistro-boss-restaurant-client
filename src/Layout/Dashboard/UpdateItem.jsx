@@ -8,16 +8,13 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const UpdateItem = () => {
   const image_hosting_key = import.meta.env.VITE_IMGBB_API_KEY;
-  console.log(image_hosting_key);
   const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
-  const { name, category, recipe, price, _id, image } = useLoaderData();
-  const item = useLoaderData();
-  console.log(item);
+  const { name, category, recipe, price, _id } = useLoaderData();
+  // const item = useLoaderData();
   const { register, handleSubmit } = useForm();
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const onSubmit = async (data) => {
-    console.log(data);
     // image upload to imgbb and then get an url
     const imageFile = { image: data.image[0] };
     const res = await axiosPublic.post(image_hosting_api, imageFile, {
