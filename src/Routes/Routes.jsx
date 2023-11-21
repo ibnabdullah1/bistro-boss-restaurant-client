@@ -15,6 +15,8 @@ import ManageItems from "../Layout/Dashboard/ManageItems";
 import UpdateItem from "../Layout/Dashboard/UpdateItem";
 import Payment from "../Layout/Dashboard/Payment";
 import PaymentHistory from "../Layout/Dashboard/PaymentHistory";
+import AdminHome from "../Layout/Dashboard/AdminHome";
+import UserHome from "../Layout/Dashboard/userHome";
 // import SignUp from "../Pages/Home/SignUp/SignUp";
 
 const router = createBrowserRouter([
@@ -97,7 +99,17 @@ const router = createBrowserRouter([
           </AdminRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/menu/${params.id}`),
+          fetch(
+            `https://bistro-boss-server-ashy-omega.vercel.app/menu/${params.id}`
+          ),
+      },
+      {
+        path: "adminhome",
+        element: <AdminHome />,
+      },
+      {
+        path: "userhome",
+        element: <UserHome />,
       },
       {
         path: "reservation",

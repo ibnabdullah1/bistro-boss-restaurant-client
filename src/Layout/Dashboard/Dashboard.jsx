@@ -52,6 +52,11 @@ const Dashboard = () => {
                   <FaUsers /> All users
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/dashboard/userhome">
+                  <AiFillHome /> User Home
+                </NavLink>
+              </li>
             </>
           ) : (
             <>

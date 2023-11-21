@@ -18,7 +18,7 @@ const useCart = () => {
 
 export default useCart;
 // useEffect(() => {
-//     fetch("http://localhost:5000/carts")
+//     fetch("https://bistro-boss-server-ashy-omega.vercel.app/carts")
 //       .then((res) => res.json())
 //       .then((data) => setCart(data));
 //   }, []);

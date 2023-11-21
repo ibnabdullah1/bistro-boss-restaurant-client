@@ -14,7 +14,6 @@ const PaymentHistory = () => {
       return res.data;
     },
   });
-  console.log(payments);
   return (
     <div>
       <SectionTitle subHeading={"At a Glance!"} heading={"PAYMENT HISTORY"} />
@@ -33,7 +32,7 @@ const PaymentHistory = () => {
             </tr>
           </thead>
           <tbody>
-            {payments.map((payment, index) => (
+            {payments.map((payment) => (
               <tr key={payment._id}>
                 <td>{payment.email}</td>
                 <td>${payment.price}</td>
